@@ -201,6 +201,10 @@ public:
   Eigen::Vector2d com_initx;
   Eigen::Vector2d com_inity;
 
+  //for joystick cmd walking
+  void zmpGenerator_joystick(const unsigned int norm_size, const unsigned planning_step_num);
+  void getZmpTrajectory_joystick();
+  void FootstepUpdateJoystick();
 
 private:
 
@@ -276,6 +280,16 @@ private:
   const VectorQd& current_qdot_;
 
 
+  //for joystick cmd walking
+  double total_step_num_joy_;
+
+  Eigen::MatrixXd foot_step_joy_;
+  Eigen::MatrixXd foot_step_joy_support_frame_;
+  Eigen::MatrixXd foot_step_joy_support_frame_offset_;
+
+  Eigen::MatrixXd ref_zmp_joy_;
+  Eigen::Vector2d final_ref_zmp_joy_;
+  bool walking_cmd_;
 
   //const double &current_time_;
   const unsigned int total_dof_;

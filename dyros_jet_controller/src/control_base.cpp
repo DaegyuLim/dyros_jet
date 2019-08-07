@@ -49,6 +49,7 @@ ControlBase::ControlBase(ros::NodeHandle &nh, double Hz) :
   haptic_command_sub_ = nh.subscribe("/dyros_jet/haptic_command", 3, &ControlBase::hapticCommandCallback, this);
   joint_command_sub_ = nh.subscribe("/dyros_jet/joint_command", 3, &ControlBase::jointCommandCallback, this);
   walking_command_sub_ = nh.subscribe("/dyros_jet/walking_command",3, &ControlBase::walkingCommandCallback,this);
+  joy_walking_command_sub_ = nh.subscribe("/dyros_jet/joystick_walking_command",3, &ControlBase::joywalkingCommandCallback,this);
   shutdown_command_sub_ = nh.subscribe("/dyros_jet/shutdown_command", 1, &ControlBase::shutdownCommandCallback,this);
   parameterInitialize();
   model_.test();
@@ -329,7 +330,28 @@ void ControlBase::walkingCommandCallback(const dyros_jet_msgs::WalkingCommandCon
   }
 
 }
+void ControlBase::joywalkingCommandCallback(const dyros_jet_msgs::WalkingCommandConstPtr& msg)
+{
+  vector<bool> compensate_v;
+  compensate_v.reserve(2);
 
+  for (int i =0; i<2; i++)
+  {
+    compensate_v[i]=msg->compensator_mode[i];
+  }
+
+
+  if(msg->walk_mode == dyros_jet_msgs::WalkingCommand::STATIC_WALKING)
+  {
+    walking_controller_.setEnable(true);
+    walking_controller_.setTarget(msg->walk_mode, msg->compensator_mode[0], msg->compensator_mode[1], msg->ik_mode, msg->heel_toe, msg->first_foot_step,
+        msg->x, msg->y, msg->z, msg->height, msg->theta, msg-> step_length_x, msg-> step_length_y,msg->walking_pattern);
+  }
+  else
+  {
+    walking_controller_.setEnable(false);
+  }
+}
 void ControlBase::shutdownCommandCallback(const std_msgs::StringConstPtr &msg)
 {
   if (msg->data == "Shut up, JET.")

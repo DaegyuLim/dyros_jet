@@ -144,6 +144,7 @@ void WalkingController::setTarget(int walk_mode, bool hip_compensation, bool lqr
                                   bool is_right_foot_swing, double x, double y, double z, double height, double theta,
                                   double step_length_x, double step_length_y, bool walking_pattern)
 {
+    cout<<"set target"<<endl;
   target_x_ = x;
   target_y_ = y;
   target_z_ = z;

@@ -159,6 +159,7 @@ private:
   ros::Subscriber haptic_command_sub_;
   ros::Subscriber joint_command_sub_;
   ros::Subscriber walking_command_sub_;
+  ros::Subscriber joy_walking_command_sub_;
   ros::Subscriber shutdown_command_sub_;
   ros::Publisher walkingstate_command_pub_;
   std_msgs::Bool walkingState_msg;
@@ -181,6 +182,7 @@ private:
   void hapticCommandCallback(const dyros_jet_msgs::TaskCommandConstPtr& msg);
   void jointCommandCallback(const dyros_jet_msgs::JointCommandConstPtr& msg);
   void walkingCommandCallback(const dyros_jet_msgs::WalkingCommandConstPtr& msg);
+  void joywalkingCommandCallback(const dyros_jet_msgs::WalkingCommandConstPtr& msg);
   void shutdownCommandCallback(const std_msgs::StringConstPtr& msg);
   void jointControlActionCallback(const dyros_jet_msgs::JointControlGoalConstPtr &goal);
 private:
