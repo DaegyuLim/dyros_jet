@@ -105,8 +105,7 @@ dyros_jet_msgs
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES dyros_jet_joystick
-  CATKIN_DEPENDS joy roscpp
-dyros_jet_msgs
+  CATKIN_DEPENDS joy roscpp dyros_jet_msgs
 #  DEPENDS system_lib
 )
 
@@ -136,6 +135,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(dyros_jet_joystick src/dyros_joystick.cpp)
 target_link_libraries(dyros_jet_joystick ${catkin_LIBRARIES})
+add_dependencies(dyros_jet_joystick ${catkin_EXPORTED_TARGETS})
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
