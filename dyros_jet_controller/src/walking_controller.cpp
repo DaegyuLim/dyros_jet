@@ -1,5 +1,4 @@
 #include "dyros_jet_controller/dyros_jet_model.h"
-#include "dyros_jet_controller/dyros_jet_model.h"
 #include "dyros_jet_controller/walking_controller.h"
 #include "cvxgen_6_8_0/cvxgen/solver.h"
 
@@ -378,7 +377,6 @@ void WalkingController::getRobotState()
   current_link_q_leg_ = current_q_.segment<12>(0);
 
   slowcalc_mutex_.unlock();
-
 }
 void WalkingController::calculateFootStepTotal()
 {

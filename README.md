@@ -30,6 +30,11 @@ sudo make install
 #include <ros.h>
 ```
 
+### Joystick Package Setup###
+'''sh
+sudo apt-get install ros-kinetic-joy
+'''
+
 ### How do I run the simulation? ###
 
 * Launch V-Rep
@@ -94,4 +99,6 @@ roslaunch dyros_jet_launch mujoco.launch
 
 ### How do I contribuite to this repo? ###
 * Read this http://wiki.ros.org/CppStyleGuide
+
+
 

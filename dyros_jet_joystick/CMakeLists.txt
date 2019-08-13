@@ -10,7 +10,7 @@ project(dyros_jet_joystick)
 find_package(catkin REQUIRED COMPONENTS
   joy
   roscpp
-dyros_jet_msgs
+  dyros_jet_msgs
 )
 
 ## System dependencies are found with CMake's conventions

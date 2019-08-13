@@ -77,7 +77,6 @@ void WalkingController::FootstepUpdateJoystick()
                        index++;
                    }
                }
-
            }
            else {
                 foot_step_joy_ = foot_step_joy_;
@@ -86,7 +85,6 @@ void WalkingController::FootstepUpdateJoystick()
                file[28]<<walking_tick_ + 30<<"\t"<<current_step_num_<<"\t"<<i<<"\t"<<foot_step_joy_(i,0)<<"\t"<<foot_step_joy_(i,1)<<"\t"<<foot_step_joy_(i,2)<<"\t"<<foot_step_joy_(i,3)<<"\t"<<foot_step_joy_(i,4)<<"\t"<<foot_step_joy_(i,5)<<"\t"<<foot_step_joy_(i,6)<<endl;
            }
        }
-
 }
 void WalkingController:: getZmpTrajectory_joystick()
 {

@@ -162,7 +162,6 @@ void mujoco_interface::simCommandCallback(const std_msgs::StringConstPtr &msg)
     rst_msg_.data="INIT";
     mujoco_sim_command_pub_.publish(rst_msg_);
   }
-
 }
 
 void mujoco_interface::update()
