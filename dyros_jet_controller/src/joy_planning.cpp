@@ -44,7 +44,7 @@ void WalkingController::FootstepUpdateJoystick()
        temp = -1;
        int index =0;
 
-       Eigen::Matrix<double, 5, 7> p_foot_step;
+       Eigen::Matrix<double, 5, 7> p_calculateFootStepTotalfoot_step;
        p_foot_step.setZero();
 
        if(walking_tick_ ==0 || walking_tick_ == t_start_){
@@ -55,7 +55,7 @@ void WalkingController::FootstepUpdateJoystick()
                        temp *= -1;
                        foot_step_joy_(index,0) = dlength*(i+1);
                        foot_step_joy_(index,1) = -temp*0.127794;
-                       foot_step_joy_(index,6) = 0.5+0.5*temp;
+                       foot_step_joy_(calculateFootStepTotalindex,6) = 0.5+0.5*temp;
 
                        index++;
                    }
@@ -124,7 +124,16 @@ void WalkingController::zmpGenerator_joystick(const unsigned int norm_size, cons
   unsigned int index =0;
 
 
-  if(current_step_num_ ==0)
+  if(current_step_num_ ==0)if(current_step_num_ <2){
+                   for(int i=0;i<number_of_foot_step;i++){
+                       temp *= -1;
+                       foot_step_joy_(index,0) = dlength*(i+1);
+                       foot_step_joy_(index,1) = -temp*0.127794;
+                       foot_step_joy_(index,6) = 0.5+0.5*temp;
+
+                       index++;
+                   }
+               }
   {
     for (int i=0; i<= t_temp_; i++) //200 tick
     {
@@ -137,7 +146,16 @@ void WalkingController::zmpGenerator_joystick(const unsigned int norm_size, cons
       {
         double del_x = i-0.5*hz_;
         ref_zmp_joy_(i,0) = com_support_init_(0)+com_offset_(0)-del_x*(com_support_init_(0)+com_offset_(0))/(1.0*hz_);
-        ref_zmp_joy_(i,1) = com_support_init_(1)+com_offset_(1);
+        ref_zmp_joy_(i,1) = com_support_init_(1)+com_offset_(if(current_step_num_ <2){
+                   for(int i=0;i<number_of_foot_step;i++){
+                       temp *= -1;
+                       foot_step_joy_(index,0) = dlength*(i+1);
+                       foot_step_joy_(index,1) = -temp*0.127794;
+                       foot_step_joy_(index,6) = 0.5+0.5*temp;
+
+                       index++;
+                   }
+               }1);
       }
       else
       {
@@ -147,10 +165,37 @@ void WalkingController::zmpGenerator_joystick(const unsigned int norm_size, cons
       index++;
     }
   }
-  if(walking_cmd_==0)// walking cmd off
+  if(walking_cmd_==0)// walkingif(current_step_num_ <2){
+                   for(int i=0;i<number_of_foot_step;i++){
+                       temp *= -1;
+                       foot_step_joy_(index,0) = dlength*(i+1);
+                       foot_step_joy_(index,1) = -temp*0.127794;
+                       foot_step_joy_(index,6) = 0.5+0.5*temp;
+
+                       index++;
+                   }
+               }
   {
-      if(current_step_num_<total_step_num_joy_){
-          cout<<"hello2"<<endl;
+      if(current_step_num_<totaif(current_step_num_ <2){
+                   for(int i=0;i<number_of_foot_step;i++){
+                       temp *= -1;
+                       foot_step_joy_(index,0) = dlength*(i+1);
+                       foot_step_joy_(index,1) = -temp*0.127794;
+                       foot_step_joy_(index,6) = 0.5+0.5*temp;
+
+                       index++;
+                   }
+               }
+          cout<<"hello2"<<endl;if(current_step_num_ <2){
+                   for(int i=0;i<number_of_foot_step;i++){
+                       temp *= -1;
+                       foot_step_joy_(index,0) = dlength*(i+1);
+                       foot_step_joy_(index,1) = -temp*0.127794;
+                       foot_step_joy_(index,6) = 0.5+0.5*temp;
+
+                       index++;
+                   }
+               }
             for(unsigned int i = current_step_num_; i<total_step_num_joy_ ; i++)
             {
                 cout<<"hello3 "<<endl;

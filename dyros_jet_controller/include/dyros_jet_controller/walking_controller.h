@@ -20,21 +20,18 @@ const std::string FILE_NAMES[FILE_CNT] =
 {
   ///change this directory when you use this code on the other computer///
 
-  "/home/jhk/data/walking/0_desired_zmp_.txt",
-  "/home/jhk/data/walking/1_desired_com_.txt",
-  "/home/jhk/data/walking/2_desired_q_.txt",
-  "/home/jhk/data/walking/3_real_q_.txt",
-  "/home/jhk/data/walking/4_desired_swingfoot_.txt",
-  "/home/jhk/data/walking/5_desired_pelvis_trajectory_.txt",
-  "/home/jhk/data/walking/6_current_com_pelvis_trajectory_.txt",
-  "/home/jhk/data/walking/7_current_foot_trajectory_.txt",
-  "/home/jhk/data/walking/8_QPestimation_variables_.txt",
-  "/home/jhk/data/walking/9_ft_sensor_.txt",
-  "/home/jhk/data/walking/10_ext_encoder_.txt",
-  "/home/jhk/data/walking/11_kalman_estimator2_.txt",
-  "/home/jhk/data/walking/12_kalman_estimator1_.txt",
-  "/home/jhk/data/walking/13_kalman_estimator3_.txt",
-  "/home/jhk/data/walking/14_grav_torque_.txt"
+  "/home/dg/data/walking/0_desired_zmp_.txt",
+  "/home/dg/data/walking/1_desired_com_.txt",
+  "/home/dg/data/walking/2_desired_q_.txt",
+  "/home/dg/data/walking/3_real_q_.txt",
+  "/home/dg/data/walking/4_desired_swingfoot_.txt",
+  "/home/dg/data/walking/5_desired_pelvis_trajectory_.txt",
+  "/home/dg/data/walking/6_current_com_pelvis_trajectory_.txt",
+  "/home/dg/data/walking/7_current_foot_trajectory_.txt",
+  "/home/dg/data/walking/8_QPestimation_variables_.txt",
+  "/home/dg/data/walking/9_ft_sensor_.txt",
+  "/home/dg/data/walking/10_ext_encoder_.txt",
+  "/home/dg/data/walking/11_lqr_information_.txt"
 
 };
 
@@ -75,11 +72,12 @@ public:
     file[9]<<"walking_tick_"<<"\t"<<"current_step_num_"<<"\t"<<"r_ft_(0)"<<"\t"<<"r_ft_(1)"<<"\t"<<"r_ft_(2)"<<"\t"<<"r_ft_(3)"<<"\t"<<"r_ft_(4)"<<"\t"<<"r_ft_(5)"<<"\t"<<"l_ft_(0)"<<"\t"<<"l_ft_(1)"<<"\t"<<"l_ft_(2)"<<"\t"<<"l_ft_(3)"<<"\t"<<"l_ft_(4)"<<"\t"<<"l_ft_(5)"<<endl;
     file[10]<<"walking_tick_"<<"\t"<<"current_step_num_"<<"\t"<<"current_link_q_leg_(0)"<<"\t"<<"current_link_q_leg_(1)"<<"\t"<<"current_link_q_leg_(2)"<<"\t"<<"current_link_q_leg_(3)"<<"\t"<<"current_link_q_leg_(4)"<<"\t"<<"current_link_q_leg_(5)"<<"\t"<<
               "current_link_q_leg_(6)"<<"\t"<<"current_link_q_leg_(7)"<<"\t"<<"current_link_q_leg_(8)"<<"\t"<<"current_link_q_leg_(9)"<<"\t"<<"current_link_q_leg_(10)"<<"\t"<<"current_link_q_leg_(11)"<<endl;
-    file[11]<<"walking_tick_"<<"\t"<<"X_hat_post_2_(0)"<<"\t"<<"X_hat_post_2_(1)"<<"\t"<<"X_hat_post_2_(2)"<<"\t"<<"X_hat_post_2_(3)"<<"\t"<<"X_hat_post_2_(4)"<<"\t"<<"X_hat_post_2_(5)"<<"\t"<<"X_hat_post_2_(6)"<<"\t"<<"X_hat_post_2_(7)"<<endl;
-    file[12]<<"walking_tick_"<<"\t"<<"X_hat_post_1_(0)"<<"\t"<<"X_hat_post_1_(1)"<<"\t"<<"X_hat_post_1_(2)"<<"\t"<<"X_hat_post_1_(3)"<<"\t"<<"X_hat_post_1_(4)"<<"\t"<<"X_hat_post_1_(5)"<<endl;
-    file[13]<<"walking_tick_"<<"\t"<<"X_hat_post_3_(0)"<<"\t"<<"X_hat_post_3_(1)"<<"\t"<<"X_hat_post_3_(2)"<<"\t"<<"X_hat_post_3_(3)"<<"\t"<<"X_hat_post_3_(4)"<<"\t"<<"X_hat_post_3_(5)"<<endl;
-    file[14]<<"walking_tick_"<<"\t"<<"grav_ground_torque_(0)"<<"\t"<<"grav_ground_torque_(1)"<<"\t"<<"grav_ground_torque_(2)"<<"\t"<<"grav_ground_torque_(3)"<<"\t"<<"grav_ground_torque_(4)"<<"\t"<<"grav_ground_torque_(5)"<<endl;
-
+    file[11]<<"walking_tick_"<<"\t"<<"lqr_output_(0)"<<"\t"<<"lqr_output_(1)"<<"\t"<<"lqr_output_(2)"<<"\t"<<"lqr_output_(3)"<<"\t"<<"lqr_output_(4)"<<"\t"<<"lqr_output_(5)"<<
+    "\t"<<"lqr_output_(6)"<<"\t"<<"lqr_output_(7)"<<"\t"<<"lqr_output_(8)"<<"\t"<<"lqr_output_(9)"<<"\t"<<"lqr_output_(10)"<<"\t"<<"lqr_output_(11)"<<
+    "\t"<<"dist(0)"<<"\t"<<"dist(1)"<<"\t"<<"dist(2)"<<"\t"<<"dist(3)"<<"\t"<<"dist(4)"<<"\t"<<"dist(5)"<<
+    "\t"<<"dist(6)"<<"\t"<<"dist(7)"<<"\t"<<"dist(8)"<<"\t"<<"dist(9)"<<"\t"<<"dist(10)"<<"\t"<<"dist(11)"<<
+    "\t"<<"del_u_right(0)"<<"\t"<<"del_u_right(1)"<<"\t"<<"del_u_right(2)"<<"\t"<<"del_u_right(3)"<<"\t"<<"del_u_right(4)"<<"\t"<<"del_u_right(5)"<<
+    "\t"<<"del_u_right(6)"<<"\t"<<"del_u_right(7)"<<"\t"<<"del_u_right(8)"<<"\t"<<"del_u_right(9)"<<"\t"<<"del_u_right(10)"<<"\t"<<"del_u_right(11)"<<endl;
   }
   //WalkingController::~WalkingController()
   //{

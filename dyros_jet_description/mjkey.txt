@@ -1,0 +1,20 @@
+MuJoCo Pro Personal license activation key, number 65858, type 6.
+
+Issued to Daegyu Lim <dgyo3784@snu.ac.kr>.
+
+Expires April 16, 2020.
+
+This file activates MuJoCo Pro on a single computer with id:
+LINUX_EHG7OSmNJD70a_V002S1Bsg316uB0054JS3nS125
+
+Do not modify this file. Its entire content, including the
+plain text section, is used by the activation manager.
+
+356c3f13b5d17a7473591f128711ffd17f893d63c99b8e72b17d25e9bf38711d
+b726d8a9f39c9724bd3551dcf8b37a8e14f91280dcffa9d23bab88c819d6e867
+e37dbd01768193c0c30b077808ac907679ce15a58bc9a4e8e7a009e0e59ab955
+591d43c8c36bdc824bf9898cd57668018149e0e8126402ac21bb887cb8a3ebf5
+ae5a67a66fbc97264822a6b77cb8e763d7c9ec566f503fd88b75d5d0cb5fef6c
+ab88a244c0c8a517694804740badf1330d2d9a4e1191c164f69ee3a839fcbac2
+62b7272e0dfc7324b67e83b646510343733e35b64895631ecfc682d73c9096e9
+0d237b949112e076239c4909f0b848cfbd35b00674f190e271779aed0ecc710d

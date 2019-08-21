@@ -25,58 +25,7 @@ void WalkingController::getQpEstimationInputMatrix()
 
   Eigen::Vector2d FT_xy;
 
-  zmp_r_(0) = (-r_ft_(4) - r_ft_(0)*0.0062) / r_ft_(2);
-  zmp_r_(1) = (r_ft_(3) - r_ft_(1)*0.0062) / r_ft_(2);
-  zmp_l_(0) = (-l_ft_(4) - l_ft_(0)*0.0062) / l_ft_(2);
-  zmp_l_(1) = (l_ft_(3) - l_ft_(1)*0.0062) / l_ft_(2);
 
-
-
-
-  if (foot_step_(current_step_num_,6)==1) //left foot support
-  {
-    if ( (walking_tick_ > t_start_ + t_rest_init_+ 2*t_double1_ && walking_tick_ < t_start_+t_total_ - t_rest_last_ - 2*t_double2_)) //ssp
-    {
-
-      //std::cout<<"left_ssp"<<endl;
-      zmp_measured_ = zmp_l_;
-      //FT_xy = l_ft_.topRows(2);
-    }
-    else //dsp
-    {
-      //std::cout<<"left_dsp"<<endl;
-      zmp_measured_(0) = ((((rfoot_support_current_.linear()).topLeftCorner<2, 2>()*zmp_r_)(0) + (rfoot_support_current_.translation())(0))*r_ft_(2) + zmp_l_(0)*l_ft_(2)) / (r_ft_(2) + l_ft_(2));
-      zmp_measured_(1) = ((((rfoot_support_current_.linear()).topLeftCorner<2, 2>()*zmp_r_)(1) + (rfoot_support_current_.translation())(1))*r_ft_(2) + zmp_l_(1)*l_ft_(2)) / (r_ft_(2) + l_ft_(2));
-      //FT_xy = r_ft_.topRows(2)+l_ft_.topRows(2);
-    }
-
-    //COM_m = COM_m_l;
-    //com_dot_measured_ = (com_measured_l_ - com_old_measured_l_)*hz_;
-    //COM_dot_m = J_COM_PSEM*PseudoInverse((L_foot_P[6].rotation().transpose())*(J_LL[6].topLeftCorner<3,6>()), 0)*_Gyro_LFoot_Rot.transpose()*(_Position_Base-_Position_Base_old)*Hz;
-    //COM_dot_m = _Gyro_RFoot_Rot.transpose()*(_Position_Base - _Position_Base_old)*Hz;
-
-  }
-  else
-  {
-    if ( (walking_tick_ > t_start_ + t_rest_init_+ 2*t_double1_ && walking_tick_ < t_start_+t_total_ - t_rest_last_ - 2*t_double2_) ) //ssp
-    {
-      //std::cout<<"right_ssp"<<endl;
-      zmp_measured_ = zmp_r_;
-      //FT_xy = r_ft_.topRows(2);
-    }
-    else //dsp
-    {
-      //std::cout<<"right_dsp"<<endl;
-      zmp_measured_(0) = ((((lfoot_support_current_.linear()).topLeftCorner<2, 2>()*zmp_l_)(0) + (lfoot_support_current_.translation())(0))*l_ft_(2) + zmp_r_(0)*r_ft_(2)) / (r_ft_(2) + l_ft_(2));
-      zmp_measured_(1) = ((((lfoot_support_current_.linear()).topLeftCorner<2, 2>()*zmp_l_)(1) + (lfoot_support_current_.translation())(1))*l_ft_(2) + zmp_r_(1)*r_ft_(2)) / (r_ft_(2) + l_ft_(2));
-      //FT_xy = r_ft_.topRows(2) + l_ft_.topRows(2);
-    }
-    //COM_m = COM_m_r;
-    //com_dot_measured_ = (com_measured_r_ - com_old_measured_r_)*hz_;
-    //COM_dot_m = J_COM_PSEM*PseudoInverse((R_foot_P[6].rotation().transpose())*(J_RL[6].topLeftCorner<3, 6>()), 0)*_Gyro_RFoot_Rot.transpose()*(_Position_Base - _Position_Base_old)*Hz;
-    //COM_dot_m = _Gyro_LFoot_Rot.transpose()*(_Position_Base - _Position_Base_old)*Hz;
-
-  }
   FT_xy = r_ft_.topRows(2) + l_ft_.topRows(2);
 
 

@@ -91,6 +91,7 @@ void ControlBase::update()
   {
     q_ext_offset_ = q_ext_ + extencoder_offset_;
   }
+
   DyrosMath::toEulerAngle(imu_data_.x(), imu_data_.y(), imu_data_.z(), imu_data_.w(), imu_grav_rpy_(0), imu_grav_rpy_(1), imu_grav_rpy_(2));
   model_.updateSensorData(right_foot_ft_, left_foot_ft_, q_ext_offset_, accelometer_, gyro_, imu_grav_rpy_);
 
@@ -328,8 +329,8 @@ void ControlBase::walkingCommandCallback(const dyros_jet_msgs::WalkingCommandCon
   {
     walking_controller_.setEnable(false);
   }
-
 }
+
 void ControlBase::joywalkingCommandCallback(const dyros_jet_msgs::WalkingCommandConstPtr& msg)
 {
   vector<bool> compensate_v;
