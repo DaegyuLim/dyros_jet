@@ -69,6 +69,10 @@ void WalkingController::compute()
           computeIkControl(pelv_trajectory_float_, lfoot_trajectory_float_, rfoot_trajectory_float_, desired_leg_q_);
           for(int i=0; i<12; i++)
           {
+            if(walking_tick_ == 0)
+            {
+              desired_q_(i) = q_init_(i);
+            }
             desired_q_(i) = desired_leg_q_(i);
           }
         }
@@ -272,13 +276,12 @@ void WalkingController::getRobotState()
 {
   Eigen::Matrix<double, DyrosJetModel::MODEL_WITH_VIRTUAL_DOF, 1> q_temp, qdot_temp;
   q_temp.setZero();
-  qdot_temp;
   q_temp.segment<28>(6) = current_q_.segment<28>(0);
   qdot_temp.segment<28>(6)= current_qdot_.segment<28>(0);
-/*  if(walking_tick_ > 0)
+  if(walking_tick_ > 0)
   {
     q_temp.segment<12>(6) =   desired_q_not_compensated_.segment<12>(0);
-  }*/
+  }
   model_.updateKinematics(q_temp, qdot_temp);
 
   com_float_current_ = model_.getCurrentCom();
@@ -1198,7 +1201,6 @@ void WalkingController::updateInitialState()
     thread_tick_ = 0;
     calculateFootStepTotal();
 
-
     q_init_ = current_q_;
     lfoot_float_init_ = model_.getCurrentTrasmfrom((DyrosJetModel::EndEffector)(0));
     rfoot_float_init_ = model_.getCurrentTrasmfrom((DyrosJetModel::EndEffector)(1));
@@ -1283,6 +1285,16 @@ void WalkingController::updateInitialState()
   }
   else if(current_step_num_!=0 && walking_tick_ == t_start_)
   {
+    Eigen::Matrix<double, DyrosJetModel::MODEL_WITH_VIRTUAL_DOF, 1> q_temp, qdot_temp;
+    q_temp.setZero();
+    q_temp.segment<28>(6) = current_q_.segment<28>(0);
+    qdot_temp.segment<28>(6)= current_qdot_.segment<28>(0);
+    if(walking_tick_ > 0)
+    {
+      q_temp.segment<12>(6) =   desired_q_not_compensated_.segment<12>(0);
+    }
+    model_.updateKinematics(q_temp, qdot_temp);
+    
     q_init_ = current_q_;
     lfoot_float_init_ = model_.getCurrentTrasmfrom((DyrosJetModel::EndEffector)(0));
     rfoot_float_init_ = model_.getCurrentTrasmfrom((DyrosJetModel::EndEffector)(1));

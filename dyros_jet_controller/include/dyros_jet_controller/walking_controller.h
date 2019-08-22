@@ -14,7 +14,7 @@
 #define ZERO_LIBRARY_MODE
 
 
-const int FILE_CNT = 15;
+const int FILE_CNT = 12;
 
 const std::string FILE_NAMES[FILE_CNT] =
 {
